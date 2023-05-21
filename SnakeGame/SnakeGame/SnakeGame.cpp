@@ -2,19 +2,38 @@
 //
 
 #include "framework.h"
+#include "string.h"
 #include "SnakeGame.h"
 
+#include "Game.h"
+#include "InputsRegistry.h"
+#include "GameRenderer.h"
+
 #define MAX_LOADSTRING 100
+
+#define WORLD_DIMENSION 50
+#define SNAKE_LENGTH 10
+
+#define FIELD_SIZE 5
+#define PADDING 25
 
 // Global Variables:
 HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
 
+UINT_PTR IDT_FRAMETIMER;                        // the frame timer event identifier
+int frameCount = 0;
+Game game = Game(WORLD_DIMENSION, SNAKE_LENGTH);
+InputsRegistry inputs;
+GameRenderer renderer = GameRenderer(FIELD_SIZE, PADDING);
+
+
 // Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
+void                PaintFrame(HDC);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -54,7 +73,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     return (int) msg.wParam;
 }
-
+   
 
 
 //
@@ -105,6 +124,13 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
       return FALSE;
    }
 
+   // Set the frame timer.
+   SetTimer(
+       hWnd,                // handle to main window 
+       IDT_FRAMETIMER,      // timer identifier 
+       100,                 // 1 10th of a second interval 
+       (TIMERPROC)NULL);    // no timer callback (events will be handled by hte WndProc)
+
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 
@@ -142,20 +168,54 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
+    case WM_KEYDOWN:
+        {
+            switch (wParam)
+            {
+            case 37:
+                inputs.RegisterLeft();
+                break;
+            case 38:
+                inputs.RegisterUp();
+                break;
+            case 39:
+                inputs.RegisterRight();
+                break;
+            case 40:
+                inputs.RegisterDown();
+                break;
+            default:
+                return DefWindowProc(hWnd, message, wParam, lParam);
+            }
+        }
+        break;
+    case WM_TIMER:
+        {
+            frameCount++;
+            game.UpdateStep(inputs);
+
+            // Force the window to redraw, i.e. send a WM_PAINT immediately (the flags are important).
+            RedrawWindow(hWnd, NULL, NULL, RDW_ERASE | RDW_INVALIDATE | RDW_UPDATENOW);
+            inputs.Reset();
+        }
+        break;
     case WM_PAINT:
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: Add any drawing code that uses hdc here...
+            renderer.DrawFrame(&game, hdc);
             EndPaint(hWnd, &ps);
         }
         break;
     case WM_DESTROY:
+        // Destroy the timer.
+        KillTimer(hWnd, IDT_FRAMETIMER);
         PostQuitMessage(0);
         break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
+
     return 0;
 }
 

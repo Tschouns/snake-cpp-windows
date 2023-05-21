@@ -13,6 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{2294c094-7fa6-49ef-bda5-931c05bbb47e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{fb25f547-450a-49a0-ab7d-63d123fc620f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameLogic">
+      <UniqueIdentifier>{82fea0ab-af6e-4c60-81a5-d6f03fb7d204}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameLogic">
+      <UniqueIdentifier>{2cfca079-ec42-446c-baf4-607195d15541}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Rendering">
+      <UniqueIdentifier>{4044f743-7a9a-4dfe-935d-7bea7798224e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rendering">
+      <UniqueIdentifier>{c543d008-4050-4be6-9895-543efa6dcd6d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -27,10 +45,55 @@
     <ClInclude Include="SnakeGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IInputs.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="InputsRegistry.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="IGame.h">
+      <Filter>Header Files\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="IGameWorld.h">
+      <Filter>Header Files\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="GameWorld.h">
+      <Filter>Header Files\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="ISnake.h">
+      <Filter>Header Files\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldCoordinates.h">
+      <Filter>Header Files\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRenderer.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SnakeGame.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="GameWorld.cpp">
+      <Filter>Source Files\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.h">
+      <Filter>Header Files\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>Source Files\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="GameRenderer.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="InputsRegistry.cpp">
+      <Filter>Source Files\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
