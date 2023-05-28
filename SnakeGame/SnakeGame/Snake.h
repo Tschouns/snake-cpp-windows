@@ -10,11 +10,13 @@ public:
 	Snake(const IGameWorld& gameWorld, const FieldCoordinates startingField, const int initialLength);
 
 	std::list<FieldCoordinates> GetFields() const;
+	FieldCoordinates GetHead() const;
 	void Up();
 	void Down();
 	void Left();
 	void Right();
 	void Move();
+	void Grow(const int numberOfParts);
 
 private:
 	FieldCoordinates WrapAroundWorldBounds(const IGameWorld& world, const FieldCoordinates field);
@@ -28,4 +30,5 @@ private:
 	// Contains the snake's fields, i.e. body parts. The first field represents the head.
 	std::list<FieldCoordinates> fields;
 	FieldCoordinates movingDirection = this->RIGHT;
+	int partsToGrow = 0;
 };

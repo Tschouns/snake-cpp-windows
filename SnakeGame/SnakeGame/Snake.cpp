@@ -1,9 +1,9 @@
 #include "Snake.h"
 
 Snake::Snake(
-	const IGameWorld& const gameWorld,
-	const FieldCoordinates const startingField,
-	const int const initialLength)
+	const IGameWorld& gameWorld,
+	const FieldCoordinates startingField,
+	const int initialLength)
 {
 	this->gameWorld = &gameWorld;
 
@@ -20,6 +20,11 @@ Snake::Snake(
 std::list<FieldCoordinates> Snake::GetFields() const
 {
 	return this->fields;
+}
+
+FieldCoordinates Snake::GetHead() const
+{
+	return this->fields.front();
 }
 
 void Snake::Up()
@@ -70,10 +75,22 @@ void Snake::Move()
 	auto newHead = this->WrapAroundWorldBounds(*this->gameWorld, potentialNewHead);
 
 	this->fields.push_front(newHead);
+
+	if (this->partsToGrow > 0)
+	{
+		this->partsToGrow--;
+		return;
+	}
+
 	this->fields.pop_back();
 }
 
-FieldCoordinates Snake::WrapAroundWorldBounds(const IGameWorld& const world, const FieldCoordinates const field)
+void Snake::Grow(const int numberOfParts)
+{
+	this->partsToGrow += numberOfParts;
+}
+
+FieldCoordinates Snake::WrapAroundWorldBounds(const IGameWorld& world, const FieldCoordinates field)
 {
 	auto x = field.x;
 	auto y = field.y;

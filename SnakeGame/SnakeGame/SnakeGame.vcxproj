@@ -127,10 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Apple.h" />
     <ClInclude Include="FieldCoordinates.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameWorld.h" />
+    <ClInclude Include="IFood.h" />
     <ClInclude Include="IGame.h" />
     <ClInclude Include="GameRenderer.h" />
     <ClInclude Include="IGameWorld.h" />
@@ -142,6 +144,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameRenderer.cpp" />
     <ClCompile Include="GameWorld.cpp" />

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "IFood.h"
 #include "IInputs.h"
 #include "IGameWorld.h"
 
@@ -24,6 +25,28 @@ public:
 	/// The snake
 	/// </returns>
 	virtual ISnake& GetSnake() const = 0;
+
+	/// <summary>
+	/// Gets the food currently in the game.
+	/// </summary>
+	/// <returns>
+	/// The food
+	/// </returns>
+	virtual const IFood& GetFood() const = 0;
+
+	/// <summary>
+	/// Gets the points scored so far in the game.
+	/// </summary>
+	/// <returns></returns>
+	virtual int GetPoints() const = 0;
+
+	/// <summary>
+	/// Gets a value indicating whether the game is finished. 
+	/// </summary>
+	/// <returns>
+	/// A value indicating whether the game is finished
+	/// </returns>
+	virtual bool IsFinished() const = 0;
 
 	/// <summary>
 	/// Restarts the game.

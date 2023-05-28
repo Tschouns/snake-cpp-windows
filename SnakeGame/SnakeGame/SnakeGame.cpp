@@ -11,10 +11,16 @@
 
 #define MAX_LOADSTRING 100
 
+#define BUTTON_ENTER 13
+#define BUTTON_LEFT 37
+#define BUTTON_UP 38
+#define BUTTON_RIGHT 39
+#define BUTTON_DOWN 40
+
 #define WORLD_DIMENSION 50
 #define SNAKE_LENGTH 10
-
-#define FIELD_SIZE 5
+#define FRAME_DURATION_MS 70
+#define FIELD_SIZE 10
 #define PADDING 25
 
 // Global Variables:
@@ -128,7 +134,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    SetTimer(
        hWnd,                // handle to main window 
        IDT_FRAMETIMER,      // timer identifier 
-       100,                 // 1 10th of a second interval 
+       FRAME_DURATION_MS,   // frame duration in milliseconds
        (TIMERPROC)NULL);    // no timer callback (events will be handled by hte WndProc)
 
    ShowWindow(hWnd, nCmdShow);
@@ -172,16 +178,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             switch (wParam)
             {
-            case 37:
+            case BUTTON_ENTER:
+                game.Restart();
+                break;
+            case BUTTON_LEFT:
                 inputs.RegisterLeft();
                 break;
-            case 38:
+            case BUTTON_UP:
                 inputs.RegisterUp();
                 break;
-            case 39:
+            case BUTTON_RIGHT:
                 inputs.RegisterRight();
                 break;
-            case 40:
+            case BUTTON_DOWN:
                 inputs.RegisterDown();
                 break;
             default:
@@ -203,7 +212,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            renderer.DrawFrame(&game, hdc);
+            renderer.DrawFrame(game, hdc);
             EndPaint(hWnd, &ps);
         }
         break;
