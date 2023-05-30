@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ISnake.h"
+#include "IFood.h"
 #include "IGameWorld.h"
 
 class Snake : public ISnake
@@ -16,7 +17,7 @@ public:
 	void Left();
 	void Right();
 	void Move();
-	void Grow(const int numberOfParts);
+	void Feed(const IFood& food);
 
 private:
 	FieldCoordinates WrapAroundWorldBounds(const IGameWorld& world, const FieldCoordinates field);

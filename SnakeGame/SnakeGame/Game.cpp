@@ -88,7 +88,7 @@ void Game::UpdateStep(const IInputs& inputs)
 	if (this->snake->GetHead() == this->food->GetPosition())
 	{
 		this->points += this->food->GetPointsAward();
-		this->snake->Grow(this->food->GetPartsToGrow());
+		this->snake->Feed(*this->food);
 
 		// Spawn new food.
 		delete this->food;
