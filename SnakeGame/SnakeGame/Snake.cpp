@@ -17,7 +17,7 @@ Snake::Snake(
 	}
 }
 
-std::list<FieldCoordinates> Snake::GetFields() const
+const std::list<FieldCoordinates>& Snake::GetFields() const
 {
 	return this->fields;
 }

@@ -16,7 +16,7 @@ public:
 	/// <returns>
 	/// The game world
 	/// </returns>
-	virtual IGameWorld& GetGameWorld() const = 0;
+	virtual const IGameWorld& GetGameWorld() const = 0;
 
 	/// <summary>
 	/// Gets the snake.
@@ -24,7 +24,7 @@ public:
 	/// <returns>
 	/// The snake
 	/// </returns>
-	virtual ISnake& GetSnake() const = 0;
+	virtual const ISnake& GetSnake() const = 0;
 
 	/// <summary>
 	/// Gets the food currently in the game.

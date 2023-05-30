@@ -9,7 +9,7 @@ public:
 	Snake() = delete;
 	Snake(const IGameWorld& gameWorld, const FieldCoordinates startingField, const int initialLength);
 
-	std::list<FieldCoordinates> GetFields() const;
+	const std::list<FieldCoordinates>& GetFields() const;
 	FieldCoordinates GetHead() const;
 	void Up();
 	void Down();
