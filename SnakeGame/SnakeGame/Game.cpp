@@ -20,17 +20,17 @@ Game::~Game()
 	delete this->food;
 }
 
-IGameWorld& Game::GetGameWorld() const
+const IGameWorld& Game::GetGameWorld() const
 {
 	return *this->gameWorld;
 }
 
-ISnake& Game::GetSnake() const
+const ISnake& Game::GetSnake() const
 {
 	return *this->snake;
 }
 
-IFood& Game::GetFood() const
+const IFood& Game::GetFood() const
 {
 	return *this->food;
 }
@@ -127,7 +127,7 @@ void Game::InitializeGame()
 	this->isFinished = false;
 }
 
-IFood* Game::CreateFood()
+const IFood* Game::CreateFood()
 {
 	FieldCoordinates position =
 	{

@@ -10,9 +10,9 @@ public:
 	Game() = delete;
 	Game(int worldDimension, int initialSnakeLength);
 	~Game();
-	IGameWorld& GetGameWorld() const;
-	ISnake& GetSnake() const;
-	IFood& GetFood() const;
+	const IGameWorld& GetGameWorld() const;
+	const ISnake& GetSnake() const;
+	const IFood& GetFood() const;
 	int GetPoints() const;
 	bool IsFinished() const;
 
@@ -21,13 +21,13 @@ public:
 
 private:
 	void InitializeGame();
-	IFood* CreateFood();
+	const IFood* CreateFood();
 
 	int worldDimensions;
 	int initialSnakeLength;
-	GameWorld* gameWorld;
+	const GameWorld* gameWorld;
 	Snake* snake;
-	IFood* food;
+	const IFood* food;
 	int points;
 	bool isFinished;
 };

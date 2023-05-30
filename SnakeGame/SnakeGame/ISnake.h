@@ -15,5 +15,5 @@ public:
 	/// <returns>
 	/// The fields which constitute the snake
 	/// </returns>
-	virtual std::list<FieldCoordinates> GetFields() const = 0;
+	virtual const std::list<FieldCoordinates>& GetFields() const = 0;
 };
