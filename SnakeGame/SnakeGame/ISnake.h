@@ -2,6 +2,7 @@
 
 #include <list>
 #include "FieldCoordinates.h"
+#include "IFood.h"
 
 /// <summary>
 /// Represents the snake as a list of fields.
@@ -51,10 +52,10 @@ public:
 	virtual void Move() = 0;
 
 	/// <summary>
-	/// Makes the snake grow by the specified number of body parts.
+	/// Feeds the snake food, which makes it grow larger.
 	/// </summary>
-	/// <param name="numberOfParts">
-	/// The number of body parts to grow
+	/// <param name="food">
+	/// The food to feed
 	/// </param>
-	virtual void Grow(const int numberOfParts) = 0;
+	virtual void Feed(const IFood& food) = 0;
 };

@@ -85,9 +85,9 @@ void Snake::Move()
 	this->fields.pop_back();
 }
 
-void Snake::Grow(const int numberOfParts)
+void Snake::Feed(const IFood& food)
 {
-	this->partsToGrow += numberOfParts;
+	this->partsToGrow += food.GetPartsToGrow();
 }
 
 FieldCoordinates Snake::WrapAroundWorldBounds(const IGameWorld& world, const FieldCoordinates field)
