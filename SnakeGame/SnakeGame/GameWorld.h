@@ -1,7 +1,6 @@
 #pragma once
 
 #include "IGameWorld.h"
-#include "Snake.h"
 
 class GameWorld : public IGameWorld
 {

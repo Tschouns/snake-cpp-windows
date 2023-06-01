@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Apple.h"
-#include "IGameWorld.h"
+#include "GameWorld.h"
+#include "Snake.h"
 #include "IInputs.h"
 #include <cstddef>
 #include <cstdlib>
