@@ -1,8 +1,8 @@
 #pragma once
 
-#include "IGame.h"
-#include "GameWorld.h"
 #include "IFood.h"
+#include "IGame.h"
+#include "IGameWorld.h"
 
 class Game : public IGame
 {
@@ -25,8 +25,8 @@ private:
 
 	int worldDimensions;
 	int initialSnakeLength;
-	const GameWorld* gameWorld;
-	Snake* snake;
+	const IGameWorld* gameWorld;
+	ISnake* snake;
 	const IFood* food;
 	int points;
 	bool isFinished;
